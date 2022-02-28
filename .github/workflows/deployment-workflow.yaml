@@ -74,7 +74,7 @@ jobs:
         name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.0
           coverage: none
           tools: composer:v2
           extensions: curl,dom,gd,mbstring,posix,yaml,zip
@@ -145,7 +145,7 @@ jobs:
         name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.0
           coverage: none
           tools: composer:v2
           extensions: curl,dom,gd,mbstring,posix,yaml,zip
@@ -217,13 +217,13 @@ jobs:
         name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.0
           coverage: none
           tools: composer:v2
           extensions: curl,dom,gd,mbstring,posix,yaml,zip
       - uses: azure/setup-kubectl@v1
         with:
-          version: 'v1.18.0'
+          version: 'v1.23.0'
         id: install-kubectl
       - uses: azure/k8s-set-context@v1
         with:
@@ -260,13 +260,13 @@ jobs:
         name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.0
           coverage: none
           tools: composer:v2
           extensions: curl,dom,gd,mbstring,posix,yaml,zip
       - uses: azure/setup-kubectl@v1
         with:
-          version: 'v1.18.0'
+          version: 'v1.23.0'
         id: install-kubectl
       - uses: azure/k8s-set-context@v1
         with:
