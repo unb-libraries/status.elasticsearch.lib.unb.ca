@@ -8,7 +8,7 @@ metadata:
     tier: database
     uri: status.elasticsearch.lib.unb.ca
     vcsOwner: unb-libraries
-    vcsRepository: elasticsearch.status.lib.unb.ca
+    vcsRepository: status.elasticsearch.lib.unb.ca
     vcsRef: prod
   name: status-elasticsearch-lib-unb-ca
   namespace: prod
@@ -38,7 +38,7 @@ spec:
         -
           env:
             -
-              name: ELASTICSEARCH_ROOT_PASSWORD
+              name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql

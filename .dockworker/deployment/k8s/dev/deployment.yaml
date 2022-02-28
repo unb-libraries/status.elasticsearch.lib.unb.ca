@@ -8,9 +8,9 @@ metadata:
     tier: database
     uri: dev-status.elasticsearch.lib.unb.ca
     vcsOwner: unb-libraries
-    vcsRepository: elasticsearch.lib.unb.ca
+    vcsRepository: status.elasticsearch.lib.unb.ca
     vcsRef: dev
-  name: drupal-elasticsearch-lib-unb-ca
+  name: status-elasticsearch-lib-unb-ca
   namespace: dev
 spec:
   selector:
@@ -29,7 +29,7 @@ spec:
         tier: database
         uri: dev-status.elasticsearch.lib.unb.ca
         vcsOwner: unb-libraries
-        vcsRepository: elasticsearch.lib.unb.ca
+        vcsRepository: status.elasticsearch.lib.unb.ca
         vcsRef: dev
     spec:
       nodeSelector:
@@ -38,14 +38,14 @@ spec:
         -
           env:
             -
-              name: ELASTICSEARCH_ROOT_PASSWORD
+              name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql
                   key: root-password
           image: "||DEPLOYMENTIMAGE||"
           imagePullPolicy: Always
-          name: drupal-elasticsearch-lib-unb-ca
+          name: status-elasticsearch-lib-unb-ca
           ports:
             -
               containerPort: 9200
