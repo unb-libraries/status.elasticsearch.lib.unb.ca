@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: elasticsearch
+    appMajor: "7"
+    instance: status.elasticsearch.lib.unb.ca
+    tier: database
+    uri: dev-status.elasticsearch.lib.unb.ca
+    vcsOwner: unb-libraries
+    vcsRepository: elasticsearch.lib.unb.ca
+    vcsRef: dev
+  name: drupal-elasticsearch-lib-unb-ca
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      uri: dev-status.elasticsearch.lib.unb.ca
+  replicas: 1
+  revisionHistoryLimit: 0
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+        appMajor: "7"
+        instance: status.elasticsearch.lib.unb.ca
+        tier: database
+        uri: dev-status.elasticsearch.lib.unb.ca
+        vcsOwner: unb-libraries
+        vcsRepository: elasticsearch.lib.unb.ca
+        vcsRef: dev
+    spec:
+      nodeSelector:
+        deployenv: dev
+      containers:
+        -
+          env:
+            -
+              name: ELASTICSEARCH_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql
+                  key: root-password
+          image: "||DEPLOYMENTIMAGE||"
+          imagePullPolicy: Always
+          name: drupal-elasticsearch-lib-unb-ca
+          ports:
+            -
+              containerPort: 9200
+              name: elasticsearch
+          volumeMounts:
+            -
+              mountPath: /usr/share/elasticsearch/data
+              name: elasticsearch-persistent-storage
+      priorityClassName: dev-high-priority-services
+      imagePullSecrets:
+        -
+          name: github-container-registry-auth
+      restartPolicy: Always
+      volumes:
+        -
+          name: elasticsearch-persistent-storage
+          persistentVolumeClaim:
+            claimName: status-elasticsearch-lib-unb-ca

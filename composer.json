@@ -1,0 +1,20 @@
+{
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "name": "unb-libraries/status.elasticsearch.lib.unb.ca",
+  "description": "Scaffold and provision local development for status.elasticsearch.lib.unb.ca",
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    }
+  },
+  "require-dev": {
+    "unb-libraries/dockworker-elasticsearch": "^5"
+  },
+  "scripts": {
+    "post-update-cmd": [
+      "vendor/bin/dockworker dockworker:git:setup-hooks"
+    ]
+  }
+}

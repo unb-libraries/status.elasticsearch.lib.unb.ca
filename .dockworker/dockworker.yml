@@ -1,0 +1,23 @@
+dockworker:
+  version: '3.0'
+  application:
+    name: status.elasticsearch.lib.unb.ca
+    finish_marker: 'Cluster health status changed from [YELLOW] to [GREEN]'
+    project_prefix: IN
+    upstream_images:
+      - docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    uuid: 3511
+  deployment:
+    environments:
+      - dev
+      - prod
+  github:
+    repo: status.elasticsearch.lib.unb.ca
+    owner: unb-libraries
+  image:
+    push_branches:
+      - dev
+      - prod
+    name: ghcr.io/unb-libraries/status.elasticsearch.lib.unb.ca
+    date_tag_image: true
+    repository: ghcr

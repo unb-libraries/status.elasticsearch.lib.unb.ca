@@ -1,0 +1,10 @@
+services:
+  status.elasticsearch.lib.unb.ca:
+    build:
+      context: .
+    env_file:
+      - ./env/elastic.env
+    restart: always
+    container_name: status.elasticsearch.lib.unb.ca
+    expose:
+      - "9200"
